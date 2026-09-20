@@ -5,6 +5,12 @@ export default function ApiKeyModal({ isOpen, onClose, currentKey, onSaveKey }) 
   const [inputValue, setInputValue] = useState(currentKey || "");
   const [savedSuccess, setSavedSuccess] = useState(false);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      setInputValue(currentKey || "");
+    }
+  }, [isOpen, currentKey]);
+
   if (!isOpen) return null;
 
   const handleSave = () => {

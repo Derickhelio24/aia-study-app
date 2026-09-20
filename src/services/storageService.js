@@ -82,7 +82,15 @@ export function getQuestionNotes() {
 // Gerenciamento da chave Gemini (Client-side segura)
 export function getStoredApiKey() {
   try {
-    return localStorage.getItem(STORAGE_KEYS.GEMINI_KEY) || import.meta.env.VITE_GEMINI_API_KEY || "";
+    const local = localStorage.getItem(STORAGE_KEYS.GEMINI_KEY);
+    if (local && local.trim().length > 5) {
+      return local.trim();
+    }
+    const envKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (envKey && envKey.trim().length > 5) {
+      return envKey.trim();
+    }
+    return "";
   } catch (e) {
     return "";
   }
