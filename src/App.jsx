@@ -147,7 +147,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-emerald-500 selection:text-white overflow-x-hidden">
       
       {/* Barra de Navegação Superior */}
       <Navbar
@@ -160,7 +160,7 @@ export default function App() {
       />
 
       {/* Conteúdo Principal Dinâmico */}
-      <main className="flex-1 pb-16">
+      <main className="flex-1 pb-24 md:pb-16 overflow-x-hidden">
         {activeTab === "dashboard" && (
           <Dashboard
             questionsList={filteredQuestions}

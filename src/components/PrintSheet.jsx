@@ -46,10 +46,10 @@ ${q.officialAnswer.sections.map(s => `${s.heading}:\n${s.content}`).join("\n\n")
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="grid grid-cols-2 gap-2 w-full sm:flex sm:items-center sm:w-auto">
           <button
             onClick={handleCopyAll}
-            className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+            className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
             <span>{copied ? "Copiado!" : "Copiar Texto"}</span>
@@ -57,7 +57,7 @@ ${q.officialAnswer.sections.map(s => `${s.heading}:\n${s.content}`).join("\n\n")
 
           <button
             onClick={handlePrint}
-            className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+            className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all"
           >
             <Printer className="w-4 h-4" />
             <span>Imprimir / Salvar PDF</span>

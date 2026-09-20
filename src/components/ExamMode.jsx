@@ -300,28 +300,37 @@ export default function ExamMode({ questionsList = QUESTIONS, onFinishExam, onEx
         </div>
       </div>
 
-      {/* Grade de Navegação Rápida entre Questões */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
-        {questionsList.map((q, idx) => {
-          const hasAnswer = Boolean(answers[q.id]?.trim());
-          const isCurrent = idx === currentIndex;
+      {/* Navegação Rápida entre Questões */}
+      <div className="bg-white rounded-xl border border-slate-200 p-2.5 sm:p-3 shadow-sm space-y-2">
+        <div className="flex items-center justify-between text-xs font-bold text-slate-700 px-1">
+          <span>Mapa de Questões do Exame:</span>
+          <span className="text-[11px] font-medium text-slate-500">
+            {Object.keys(answers).filter(k => answers[k]?.trim()).length} de {questionsList.length} respondidas
+          </span>
+        </div>
 
-          return (
-            <button
-              key={q.id}
-              onClick={() => setCurrentIndex(idx)}
-              className={`w-9 h-9 rounded-lg text-xs font-bold transition-all shrink-0 ${
-                isCurrent
-                  ? "bg-amber-500 text-slate-950 shadow"
-                  : hasAnswer
-                  ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-                  : "bg-white text-slate-500 border border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              Q{idx + 1}
-            </button>
-          );
-        })}
+        <div className="grid grid-cols-6 sm:grid-cols-8 md:flex md:flex-wrap gap-1.5">
+          {questionsList.map((q, idx) => {
+            const hasAnswer = Boolean(answers[q.id]?.trim());
+            const isCurrent = idx === currentIndex;
+
+            return (
+              <button
+                key={q.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-8 sm:h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center ${
+                  isCurrent
+                    ? "bg-amber-500 text-slate-950 shadow ring-2 ring-amber-400/50"
+                    : hasAnswer
+                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                    : "bg-slate-50 text-slate-500 border border-slate-200 hover:bg-slate-100"
+                }`}
+              >
+                Q{idx + 1}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Cartão da Pergunta */}

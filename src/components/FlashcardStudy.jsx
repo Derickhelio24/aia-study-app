@@ -177,79 +177,87 @@ export default function FlashcardStudy({
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
       
       {/* Topbar da Sessão de Flashcards */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
-        <div className="flex items-center gap-3">
+      {/* Cabeçalho de Navegação da Questão */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={onBackToDashboard}
-            className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors"
+            className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors shrink-0"
             title="Voltar ao Dashboard"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider truncate">
                 {question.moduleTitle}
               </span>
               <span className="text-slate-300">•</span>
-              <span className="text-xs font-semibold text-slate-500">
-                Questão {currentIndex + 1} de {questionsList.length}
+              <span className="text-xs font-semibold text-slate-500 shrink-0">
+                Q.{currentIndex + 1} de {questionsList.length}
               </span>
             </div>
-            <h2 className="text-base font-bold text-slate-900 line-clamp-1">
+            <h2 className="text-sm sm:text-base font-bold text-slate-900 truncate">
               {question.title}
             </h2>
           </div>
         </div>
 
-        {/* Controles de Navegação, Filtro e Gerador */}
-        <div className="flex flex-wrap items-center gap-2 self-end sm:self-auto">
+        {/* Controles de Navegação e Áudio */}
+        <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
           
-          {/* Botão para Gerar Pergunta Inédita com IA */}
-          <button
-            onClick={onGenerateBrandNew}
-            disabled={isGeneratingQuestion}
-            className="p-2 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 hover:bg-emerald-100 text-xs font-bold flex items-center gap-1.5 transition-all disabled:opacity-50"
-            title="Gerar nova questão com IA que não estava no documento"
-          >
-            <PlusCircle className="w-4 h-4 text-emerald-600" />
-            <span className="hidden md:inline">{isGeneratingQuestion ? "Gerando..." : "Nova Questão com IA"}</span>
-          </button>
+          <div className="flex items-center gap-1.5">
+            {/* Botão para Gerar Pergunta Inédita com IA */}
+            <button
+              onClick={onGenerateBrandNew}
+              disabled={isGeneratingQuestion}
+              className="px-2.5 py-1.5 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 hover:bg-emerald-100 text-xs font-bold flex items-center gap-1.5 transition-all disabled:opacity-50"
+              title="Gerar nova questão com IA"
+            >
+              <PlusCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span className="hidden sm:inline">{isGeneratingQuestion ? "Gerando..." : "Nova Questão IA"}</span>
+            </button>
 
-          <button
-            onClick={() => toggleSpeech(isFlipped ? question.officialAnswer.summary : question.question)}
-            className={`p-2 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all ${
-              isSpeaking 
-                ? "bg-amber-100 text-amber-900 border-amber-300 animate-pulse" 
-                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-            }`}
-            title="Ouvir texto em voz alta"
-          >
-            {isSpeaking ? <VolumeX className="w-4 h-4 text-amber-600" /> : <Volume2 className="w-4 h-4 text-emerald-600" />}
-            <span className="hidden sm:inline">{isSpeaking ? "Parar" : "Ouvir"}</span>
-          </button>
+            {/* Botão Áudio */}
+            <button
+              onClick={() => toggleSpeech(isFlipped ? question.officialAnswer.summary : question.question)}
+              className={`px-2.5 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                isSpeaking 
+                  ? "bg-amber-100 text-amber-900 border-amber-300 animate-pulse" 
+                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+              }`}
+              title="Ouvir texto em voz alta"
+            >
+              {isSpeaking ? <VolumeX className="w-4 h-4 text-amber-600 shrink-0" /> : <Volume2 className="w-4 h-4 text-emerald-600 shrink-0" />}
+              <span>{isSpeaking ? "Parar" : "Ouvir"}</span>
+            </button>
+          </div>
 
-          <button
-            disabled={currentIndex === 0}
-            onClick={() => onSelectQuestion(questionsList[currentIndex - 1].id)}
-            className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
-            title="Questão Anterior"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+          {/* Navegação Anterior / Próxima */}
+          <div className="flex items-center gap-1 bg-white border border-slate-200 rounded-lg p-0.5">
+            <button
+              disabled={currentIndex === 0}
+              onClick={() => onSelectQuestion(questionsList[currentIndex - 1].id)}
+              className="p-1.5 rounded text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed"
+              title="Questão Anterior"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
 
-          <span className="text-xs font-bold text-slate-700 px-1">
-            {currentIndex + 1} / {questionsList.length}
-          </span>
+            <span className="text-[11px] font-bold text-slate-700 px-1.5">
+              {currentIndex + 1}/{questionsList.length}
+            </span>
 
-          <button
-            disabled={currentIndex === questionsList.length - 1}
-            onClick={() => onSelectQuestion(questionsList[currentIndex + 1].id)}
-            className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
-            title="Próxima Questão"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+            <button
+              disabled={currentIndex === questionsList.length - 1}
+              onClick={() => onSelectQuestion(questionsList[currentIndex + 1].id)}
+              className="p-1.5 rounded text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed"
+              title="Próxima Questão"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
         </div>
       </div>
 
@@ -393,71 +401,75 @@ export default function FlashcardStudy({
           className="w-full p-4 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-slate-800 placeholder-slate-400 resize-y transition-all"
         />
 
-        {/* Barra de Ações com IA */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Botão Avaliar com IA */}
-            <button
-              onClick={handleEvaluate}
-              disabled={isEvaluating}
-              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-sm transition-all hover:scale-[1.01] disabled:opacity-50"
-            >
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span>{isEvaluating ? "Avaliando resposta..." : "Avaliar Minha Resposta"}</span>
-            </button>
+        {/* Barra de Ações com IA e Classificação */}
+        <div className="space-y-3 pt-1">
+          {/* Botão Principal de Avaliação */}
+          <button
+            onClick={handleEvaluate}
+            disabled={isEvaluating}
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+          >
+            <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>{isEvaluating ? "Avaliando com o Docente..." : "Avaliar Minha Resposta com IA"}</span>
+          </button>
 
-            {/* Botão Tutor Explicar */}
-            <button
-              onClick={handleOpenTutor}
-              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs flex items-center gap-1.5 transition-colors"
-            >
-              <Lightbulb className="w-4 h-4 text-amber-600" />
-              <span>Explicar Conceito</span>
-            </button>
+          {/* Ações Secundárias e Classificação */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-1 border-t border-slate-100">
+            {/* Ações da IA: Tutor & Cenário */}
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
+              <button
+                onClick={handleOpenTutor}
+                className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <Lightbulb className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <span>Explicar Conceito</span>
+              </button>
 
-            {/* Botão Novo Cenário */}
-            <button
-              onClick={handleOpenScenario}
-              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs flex items-center gap-1.5 transition-colors"
-            >
-              <Globe2 className="w-4 h-4 text-blue-600" />
-              <span>Gerar Caso Prático</span>
-            </button>
-          </div>
+              <button
+                onClick={handleOpenScenario}
+                className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <Globe2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <span>Caso Prático</span>
+              </button>
+            </div>
 
-          {/* Botões de Autoavaliação / Repetição Espaçada */}
-          <div className="flex items-center gap-1.5 text-xs font-semibold">
-            <span className="text-slate-400 mr-1 hidden sm:inline">Classificar:</span>
-            <button
-              onClick={() => handleRateCard("hard")}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
-                currentStatus === "hard" 
-                  ? "bg-rose-100 text-rose-800 border-rose-300 font-bold" 
-                  : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-rose-50 hover:text-rose-700"
-              }`}
-            >
-              Difícil
-            </button>
-            <button
-              onClick={() => handleRateCard("medium")}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
-                currentStatus === "medium" 
-                  ? "bg-amber-100 text-amber-800 border-amber-300 font-bold" 
-                  : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-amber-50 hover:text-amber-700"
-              }`}
-            >
-              Médio
-            </button>
-            <button
-              onClick={() => handleRateCard("easy")}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
-                currentStatus === "easy" 
-                  ? "bg-emerald-100 text-emerald-800 border-emerald-300 font-bold" 
-                  : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-emerald-50 hover:text-emerald-700"
-              }`}
-            >
-              Fácil
-            </button>
+            {/* Botões de Autoavaliação / Repetição Espaçada */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] font-bold text-slate-400 mr-1 hidden sm:inline">Domínio:</span>
+              <div className="grid grid-cols-3 gap-1.5 w-full sm:w-auto">
+                <button
+                  onClick={() => handleRateCard("hard")}
+                  className={`py-1.5 px-3 rounded-lg border text-xs text-center transition-all ${
+                    currentStatus === "hard" 
+                      ? "bg-rose-100 text-rose-800 border-rose-300 font-bold" 
+                      : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-rose-50 hover:text-rose-700"
+                  }`}
+                >
+                  Difícil
+                </button>
+                <button
+                  onClick={() => handleRateCard("medium")}
+                  className={`py-1.5 px-3 rounded-lg border text-xs text-center transition-all ${
+                    currentStatus === "medium" 
+                      ? "bg-amber-100 text-amber-800 border-amber-300 font-bold" 
+                      : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-amber-50 hover:text-amber-700"
+                  }`}
+                >
+                  Médio
+                </button>
+                <button
+                  onClick={() => handleRateCard("easy")}
+                  className={`py-1.5 px-3 rounded-lg border text-xs text-center transition-all ${
+                    currentStatus === "easy" 
+                      ? "bg-emerald-100 text-emerald-800 border-emerald-300 font-bold" 
+                      : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-emerald-50 hover:text-emerald-700"
+                  }`}
+                >
+                  Fácil
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

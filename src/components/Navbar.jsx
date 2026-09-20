@@ -77,8 +77,8 @@ export default function Navbar({
             </div>
           </div>
 
-          {/* Navegação e Ações */}
-          <div className="flex items-center gap-2">
+          {/* Navegação Desktop (Oculta no Mobile) */}
+          <div className="hidden md:flex items-center gap-2">
             
             {/* Botão Módulos */}
             <button
@@ -90,7 +90,7 @@ export default function Navbar({
               }`}
             >
               <Layers className="w-4 h-4" />
-              <span className="hidden sm:inline">Módulos</span>
+              <span>Módulos</span>
             </button>
 
             {/* Botão Flashcards */}
@@ -103,7 +103,7 @@ export default function Navbar({
               }`}
             >
               <BookOpen className="w-4 h-4" />
-              <span className="hidden sm:inline">Flashcards</span>
+              <span>Flashcards</span>
             </button>
 
             {/* Botão Modo Exame */}
@@ -131,29 +131,87 @@ export default function Navbar({
               title="Guia completo para imprimir ou estudar offline"
             >
               <Printer className="w-4 h-4" />
-              <span className="hidden lg:inline">Ficha PDF</span>
+              <span>Ficha PDF</span>
             </button>
 
-            {/* Botão Chave Gemini */}
+          </div>
+
+          {/* Botão Chave Gemini / Status da IA (Visível em Desktop e Mobile) */}
+          <div className="flex items-center gap-2">
             <button
               onClick={onOpenApiKeyModal}
-              className={`p-2 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all border ${
+              className={`px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all border shrink-0 ${
                 hasApiKey 
                   ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
                   : "bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 text-amber-300"
               }`}
               title={hasApiKey ? "IA Gemini Ativa (Clique para gerenciar)" : "Configurar Chave Gemini ou Modo Offline"}
             >
-              <Key className="w-4 h-4" />
-              <span className="hidden xl:inline">
+              <Key className="w-3.5 h-3.5" />
+              <span className="text-[11px] font-semibold">
                 {hasApiKey ? "IA Conectada" : "Chave IA"}
               </span>
-              <span className={`w-2 h-2 rounded-full ${hasApiKey ? "bg-emerald-400 animate-pulse" : "bg-amber-400"}`} />
+              <span className={`w-2 h-2 rounded-full shrink-0 ${hasApiKey ? "bg-emerald-400 animate-pulse" : "bg-amber-400"}`} />
             </button>
-
           </div>
+
         </div>
       </div>
+
+      {/* Barra Inferior Fixa para Mobile (Estilo App Nativa) */}
+      <nav aria-label="Navegação móvel" className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 px-2 py-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] no-print">
+        <div className="grid grid-cols-4 gap-1 max-w-md mx-auto">
+          
+          <button
+            onClick={() => setActiveTab("dashboard")}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all ${
+              activeTab === "dashboard"
+                ? "text-emerald-400 bg-emerald-500/10 font-bold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Layers className="w-5 h-5 mb-0.5" />
+            <span className="text-[10px] tracking-tight">Módulos</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("study")}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all ${
+              activeTab === "study"
+                ? "text-emerald-400 bg-emerald-500/10 font-bold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <BookOpen className="w-5 h-5 mb-0.5" />
+            <span className="text-[10px] tracking-tight">Flashcards</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("exam")}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all ${
+              activeTab === "exam"
+                ? "text-amber-400 bg-amber-500/10 font-bold"
+                : "text-slate-400 hover:text-amber-400"
+            }`}
+          >
+            <Clock className="w-5 h-5 mb-0.5" />
+            <span className="text-[10px] tracking-tight">Simulado</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("print")}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all ${
+              activeTab === "print"
+                ? "text-emerald-400 bg-emerald-500/10 font-bold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Printer className="w-5 h-5 mb-0.5" />
+            <span className="text-[10px] tracking-tight">Ficha PDF</span>
+          </button>
+
+        </div>
+      </nav>
     </header>
   );
 }

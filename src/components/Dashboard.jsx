@@ -43,40 +43,40 @@ export default function Dashboard({
   const masteryPercentage = Math.round((stats.masteredCount / (stats.totalCount || 1)) * 100);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8">
       
       {/* Banner Principal EcoTech */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-950 text-white p-6 sm:p-8 border border-emerald-800/40 shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-950 text-white p-5 sm:p-8 border border-emerald-800/40 shadow-xl">
         <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 sm:gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
-              <BookCheck className="w-3.5 h-3.5" />
-              <span>A Politécnica • Eng. Elétrica • Docente: Joel Jorge Malope</span>
+              <BookCheck className="w-3.5 h-3.5 shrink-0" />
+              <span className="line-clamp-1">A Politécnica • Eng. Elétrica • Prof. Joel Jorge Malope</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-white">
               Preparação Intensiva: Teste 1 de AIA
             </h1>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              Estude as <strong className="text-emerald-300 font-semibold">9 questões oficiais do docente</strong> ou explore as questões expandidas com <strong className="text-emerald-300 font-semibold">estudos de caso reais de Moçambique</strong> (Dondo, Songo-Matambo, Namaacha, Cahora Bassa, Lei 12/2022 e ACV por Jambo, 2025).
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Estude as <strong className="text-emerald-300 font-semibold">9 questões oficiais do docente</strong> ou explore as questões expandidas com <strong className="text-emerald-300 font-semibold">estudos de caso de Moçambique</strong> (Dondo, Songo-Matambo, Namaacha, Cahora Bassa, Lei 12/2022 e ACV por Jambo, 2025).
             </p>
           </div>
 
           {/* Botões de Ação Imediata */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={onStartExam}
-              className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              <Clock className="w-4 h-4" />
+              <Clock className="w-4 h-4 shrink-0" />
               <span>Iniciar Simulado</span>
             </button>
 
             <button
               onClick={onOpenPrint}
-              className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm flex items-center gap-2 transition-all hover:text-white"
+              className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all hover:text-white"
             >
-              <FileText className="w-4 h-4 text-emerald-400" />
+              <FileText className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Ficha Completa (PDF)</span>
             </button>
           </div>
@@ -84,25 +84,27 @@ export default function Dashboard({
       </div>
 
       {/* Barra de Filtro de Perguntas & Gerador de Questão Inédita */}
-      <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-slate-400" />
-          <span className="text-xs font-bold text-slate-700 mr-2">Modo de Estudo:</span>
+      <div className="bg-white rounded-2xl border border-slate-200/90 p-3.5 sm:p-4 shadow-sm space-y-3 sm:space-y-0 sm:flex sm:items-center sm:justify-between sm:gap-4">
+        <div className="space-y-2 sm:space-y-0 sm:flex sm:items-center sm:gap-3 w-full sm:w-auto">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 shrink-0">
+            <Filter className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Filtrar:</span>
+          </div>
           
-          <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+          <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl w-full sm:w-auto">
             <button
               onClick={() => setQuestionFilter("official")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all text-center truncate ${
                 questionFilter === "official"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              📌 As 9 do Docente
+              📌 9 Oficiais
             </button>
             <button
               onClick={() => setQuestionFilter("all")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all text-center truncate ${
                 questionFilter === "all"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
@@ -112,13 +114,13 @@ export default function Dashboard({
             </button>
             <button
               onClick={() => setQuestionFilter("bonus")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all text-center truncate ${
                 questionFilter === "bonus"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              💡 Extras / Pegadinhas
+              💡 Casos/Extras
             </button>
           </div>
         </div>
@@ -127,10 +129,10 @@ export default function Dashboard({
         <button
           onClick={onGenerateBrandNew}
           disabled={isGeneratingQuestion}
-          className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all hover:scale-[1.02] disabled:opacity-50"
+          className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
         >
-          <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-spin" />
-          <span>{isGeneratingQuestion ? "Criando pergunta com IA..." : "+ Gerar Nova Pergunta Inédita com IA"}</span>
+          <Sparkles className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+          <span>{isGeneratingQuestion ? "Criando pergunta com IA..." : "+ Nova Questão com IA"}</span>
         </button>
       </div>
 
@@ -317,7 +319,7 @@ export default function Dashboard({
                 {questionFilter === "official" ? "Mostrando apenas as 9 do docente" : "Mostrando todas"}
               </span>
             </div>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 gap-1.5">
               {questionsList.map((q) => {
                 const qStatus = progress[q.id]?.status;
                 let bgClass = "bg-slate-100 text-slate-700 hover:bg-slate-200";
