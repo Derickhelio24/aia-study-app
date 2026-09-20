@@ -5,6 +5,8 @@
 
 import { GoogleGenAI } from "@google/genai";
 
+const GEMINI_MODEL = "gemini-3.6-flash";
+
 /**
  * Avalia a resposta do estudante comparando com o gabarito oficial e legislação de Moçambique.
  */
@@ -66,7 +68,7 @@ IMPORTANTE: Responda ESTRITAMENTE em formato JSON com o seguinte schema:
 `;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
         config: {
           responseMimeType: "application/json",
@@ -184,7 +186,7 @@ Seja didático, use formatação clara com tópicos e linguagem de alto nível a
 `;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
       });
 
@@ -248,7 +250,7 @@ Formato de retorno em JSON:
 `;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
         config: { responseMimeType: "application/json" }
       });
@@ -329,7 +331,7 @@ Retorne ESTRITAMENTE em formato JSON com o seguinte schema:
 `;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: GEMINI_MODEL,
         contents: prompt,
         config: { responseMimeType: "application/json" }
       });
