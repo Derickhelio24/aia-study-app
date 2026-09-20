@@ -44,7 +44,7 @@ export default function Navbar({
                 </span>
               </div>
               <p className="text-xs text-slate-400 hidden sm:block">
-                Preparação p/ Teste 1 • Decreto 54/2015 & Lei 20/97
+                A Politécnica • Eng. Elétrica • Prof. Joel Jorge Malope
               </p>
             </div>
           </div>

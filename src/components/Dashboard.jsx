@@ -52,15 +52,13 @@ export default function Dashboard({
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
               <BookCheck className="w-3.5 h-3.5" />
-              <span>Programa Oficial & Banco Expandido com IA • 2026</span>
+              <span>A Politécnica • Eng. Elétrica • Docente: Joel Jorge Malope</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
               Preparação Intensiva: Teste 1 de AIA
             </h1>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Estude as <strong className="text-emerald-300 font-semibold">9 questões oficiais do docente</strong> ou explore questões complementares e cenários inéditos gerados pela IA sobre a 
-              <strong className="text-emerald-300 font-semibold"> Lei nº 20/97</strong> e o 
-              <strong className="text-emerald-300 font-semibold"> Decreto nº 54/2015</strong>.
+              Estude as <strong className="text-emerald-300 font-semibold">9 questões oficiais do docente</strong> ou explore as questões expandidas com <strong className="text-emerald-300 font-semibold">estudos de caso reais de Moçambique</strong> (Dondo, Songo-Matambo, Namaacha, Cahora Bassa, Lei 12/2022 e ACV por Jambo, 2025).
             </p>
           </div>
 

@@ -18,31 +18,31 @@ export const MODULES = [
     id: "mod-2",
     title: "Quadro Legal e Institucional",
     subtitle: "AIA em Moçambique",
-    description: "Estrutura institucional (MTA, DINAB, DPA), instrumentos normativos, infrações e sanções (Decreto nº 54/2015).",
-    badge: "Decreto nº 54/2015",
+    description: "Estrutura institucional (MTA, DINAB, DPA), instrumentos normativos, infrações, sanções (Decreto nº 54/2015) e Nova Lei de Electricidade (Lei nº 12/2022).",
+    badge: "Decreto nº 54/2015 & Lei 12/2022",
     color: "blue",
-    questionsCount: 2,
-    questionIds: [2, 14]
+    questionsCount: 3,
+    questionIds: [2, 14, 22]
   },
   {
     id: "mod-3",
     title: "O Processo de AIA e Participação Pública",
     subtitle: "Fases, Categorias (A+, A, B, C) e Consulta",
-    description: "Classificação prévia, EPDA, Termos de Referência, REIA, critérios de Categoria A+ e o papel vinculativo da consulta pública.",
+    description: "Classificação prévia, EPDA, Termos de Referência, REIA, critérios de Categoria A+, hierarquia de mitigação e consulta pública.",
     badge: "Categorias A+, A, B, C",
     color: "amber",
-    questionsCount: 3,
-    questionIds: [3, 9, 11]
+    questionsCount: 4,
+    questionIds: [3, 9, 11, 16]
   },
   {
     id: "mod-4",
     title: "Linhas de Transmissão Elétrica",
     subtitle: "Impactos na Construção, Operação e Áreas Habitadas",
-    description: "Abertura de faixas de servidão, restrições legais, desmatamento, avifauna, efeito corona e reassentamento populacional.",
-    badge: "Setor Elétrico",
+    description: "Abertura de faixas de servidão, restrições legais, desmatamento, avifauna, efeito corona, reassentamento e caso da Linha 400 kV Songo-Matambo.",
+    badge: "Setor Elétrico & Estudos de Caso",
     color: "purple",
-    questionsCount: 3,
-    questionIds: [4, 6, 12]
+    questionsCount: 4,
+    questionIds: [4, 6, 12, 19]
   },
   {
     id: "mod-5",
@@ -57,12 +57,12 @@ export const MODULES = [
   {
     id: "mod-6",
     title: "Matriz Energética Comparada",
-    subtitle: "Central Termoelétrica vs Solar Fotovoltaica",
-    description: "Análise comparativa de impactos: emissões atmosféricas, pegada de carbono, recursos hídricos, baterias BESS e descarte de módulos.",
-    badge: "Transição Energética",
+    subtitle: "Térmica, Solar, Eólica e Hídrica em Moçambique",
+    description: "Análise comparativa de impactos: ACV (Jambo, 2025), casos reais Dondo (solar), Namaacha (eólica), Cahora Bassa (hídrica) e BESS.",
+    badge: "Transição Energética & Casos Reais",
     color: "teal",
-    questionsCount: 2,
-    questionIds: [8, 15]
+    questionsCount: 6,
+    questionIds: [8, 15, 17, 18, 20, 21]
   }
 ];
 
@@ -645,6 +645,291 @@ export const QUESTIONS = [
       "Na Central Solar de Cuamba com sistema de armazenamento BESS, que tipo de bacia de contenção secundária é exigida em caso de vazamento de eletrólitos dos contêineres de baterias?"
     ],
     isOfficialDoc: false
+  },
+  {
+    id: 16,
+    moduleId: "mod-3",
+    moduleTitle: "O Processo de AIA",
+    title: "Hierarquia de Mitigação Ambiental (4 Níveis Essenciais)",
+    question: "Explique os quatro níveis da Hierarquia de Mitigação Ambiental (Evitar, Minimizar, Restaurar e Compensar) aplicados a um projeto de infraestrutura de energia em Moçambique.",
+    contextPrompt: "Apresente a ordem de prioridade estrita, descrevendo o objetivo e uma medida prática de engenharia para cada um dos quatro patamares.",
+    keywords: [
+      "Hierarquia de Mitigação",
+      "Evitar",
+      "Minimizar",
+      "Restaurar",
+      "Compensar",
+      "contrabalanço ambiental",
+      "offsets"
+    ],
+    officialAnswer: {
+      summary: "A hierarquia de mitigação estabelece uma ordem prioritária obrigatória: 1. EVITAR o impacto; 2. MINIMIZAR sua intensidade; 3. RESTAURAR o ecossistema após as obras; 4. COMPENSAR impactos residuais inevitáveis.",
+      sections: [
+        {
+          heading: "1. EVITAR (Prioridade Máxima)",
+          content: "Alterar a localização geográfica ou o traçado do projeto para impedir que o impacto ocorra. Exemplo: Desviar o traçado de uma linha de transmissão para contornar uma área sagrada comunitária ou uma zona húmida costeira de mangal."
+        },
+        {
+          heading: "2. MINIMIZAR (Impactos Inevitáveis)",
+          content: "Reduzir a magnitude, escala ou duração física do impacto que não pode ser evitado. Exemplo: Instalar desviadores de voo espirais nos cabos condutores para reduzir colisão de aves, ou umectar estradas de terra para conter poeiras."
+        },
+        {
+          heading: "3. RESTAURAR (Pós-Construção)",
+          content: "Reabilitar e reflorestar os ecossistemas e solos degradados imediatamente após o término das obras civis. Exemplo: Recomposição vegetal com espécies nativas nas áreas do canteiro de obras e áreas de empréstimo de terra."
+        },
+        {
+          heading: "4. COMPENSAR (Contrabalanços / Offsets)",
+          content: "Criar ganhos ecológicos mensuráveis em outro local equivalente para balancear perdas residuais que não puderam ser restauradas. Exemplo: Financiar a proteção permanente de 100 hectares de floresta nativa num parque nacional para compensar a perda de 50 hectares na faixa de servidão."
+        }
+      ],
+      legalRef: "Princípios da Lei do Ambiente (Lei nº 20/97) e Regulamento de AIA (Decreto nº 54/2015).",
+      keyDistinction: "A compensação é sempre o último recurso: é um erro técnico grave tentar compensar sem antes esgotar as medidas de evitar e minimizar."
+    },
+    sampleScenarios: [
+      "Num projeto de parque solar, o projetista propôs apenas compensar financeiramente o desmatamento sem tentar desviar a cerca da nascente do rio. Como a DINAB deve avaliar essa proposta sob a ótica da hierarquia?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 17,
+    moduleId: "mod-6",
+    moduleTitle: "Matriz Energética Comparada",
+    title: "Avaliação do Ciclo de Vida (ACV Cradle-to-Grave) na Energia Solar",
+    question: "Por que a Avaliação do Ciclo de Vida (ACV 'do berço à sepultura') demonstra que a energia solar fotovoltaica não é 100% isenta de impactos ambientais, segundo estudos acadêmicos em Moçambique (Jambo, 2025)?",
+    contextPrompt: "Explique as cargas ambientais geradas fora da fase de operação, abrangendo extração de silício, fabricação do módulo (vidro/alumínio), transporte e descarte final.",
+    keywords: [
+      "Avaliação do Ciclo de Vida",
+      "ACV",
+      "cradle-to-grave",
+      "do berço à sepultura",
+      "fabricação do módulo",
+      "purificação de silício",
+      "logística de transporte",
+      "Jambo 2025"
+    ],
+    officialAnswer: {
+      summary: "A energia solar tem emissões operacionais nulas, mas a ACV revela que a maior carga ambiental está concentrada na extração mineral e refinação térmica do silício, fabricação das molduras de alumínio e vidro, e no transporte marítimo/rodoviário até Moçambique.",
+      sections: [
+        {
+          heading: "1. Conceito da ACV Cradle-to-Grave",
+          content: "A abordagem do berço à sepultura analisa o balanço ecológico integral em todas as etapas: extração de matérias-primas, processamento industrial, logística, instalação no local, manutenção e desativação."
+        },
+        {
+          heading: "2. Cargas Ambientais Ocultas da Cadeia de Produtos",
+          content: "A purificação do silício grau solar exige fornos elétricos a mais de 1.800 °C frequentemente alimentados por usinas a carvão nos países fabricantes (alta energia incorporada - embodied energy). Além disso, a produção de alumínio para as estruturas metálicas de sustentação é eletrointensiva e gera bauxita e efluentes cáusticos."
+        },
+        {
+          heading: "3. Relevância para a AIA em Moçambique",
+          content: "Demonstra que a aprovação ambiental não pode ignorar o plano de descomissionamento e reciclagem após 25 anos de vida útil, prevenindo que Moçambique se torne depósito de lixo eletrônico (E-waste)."
+        }
+      ],
+      legalRef: "Dissertação de Eugénio Gabriel Jambo (UEM, 2025) e Política de Energias Novas e Renováveis.",
+      keyDistinction: "A energia solar limpa o ar local durante 25 anos de geração, mas sua pegada ecológica global existe e decorre da cadeia industrial de fabricação."
+    },
+    sampleScenarios: [
+      "Qual indicador técnico de ACV mede o tempo necessário para que um painel solar gere a mesma quantidade de energia gasta na sua fabricação (Energy Payback Time)?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 18,
+    moduleId: "mod-6",
+    moduleTitle: "Matriz Energética Comparada",
+    title: "Estudo de Caso: Central Solar de Dondo (Bairro Macharote, Sofala)",
+    question: "Analise os principais impactos ambientais e sociais identificados na AIA da Central Solar Fotovoltaica de Dondo (40 MW) na Província de Sofala.",
+    contextPrompt: "Aborde a escala territorial de ocupação (~88 hectares), impactos de curto prazo na obra (ruído e poeiras), PGAS e os desafios de uso da terra no Bairro Macharote.",
+    keywords: [
+      "Central Solar de Dondo",
+      "Bairro Macharote",
+      "Província de Sofala",
+      "40 MW",
+      "88 hectares",
+      "poeiras e ruído",
+      "PGAS",
+      "uso da terra"
+    ],
+    officialAnswer: {
+      summary: "A Central de Dondo ocupa ~88 hectares de terra no Bairro Macharote. A AIA destacou impactos locais de curto prazo na fase de construção (poeiras, ruído e supressão vegetal) e condicionou a viabilidade à execução de um Plano de Gestão Ambiental e Social (PGAS).",
+      sections: [
+        {
+          heading: "1. Dimensão e Características do Projeto",
+          content: "Potência instalada de 40 MW com ocupação territorial expressiva de cerca de 88 hectares de solo plano no Bairro Macharote, distrito de Dondo, Sofala, interligada à subestação da EDM."
+        },
+        {
+          heading: "2. Impactos de Curto Prazo (Fase de Construção)",
+          content: "• Movimentação de terras e decapagem: geração elevada de material particulado (poeiras) nas imediações de habitações rurais;\n• Tráfego de maquinaria pesada: ruído contínuo e riscos viários nas vias de acesso não pavimentadas;\n• Supressão de cobertura vegetal: perda localizada de capim e arbustos nativos."
+        },
+        {
+          heading: "3. Conclusões e Medidas Obrigatórias da AIA",
+          content: "O projeto foi aprovado com Licença Ambiental pelo MTA mediante o cumprimento do PGAS, com rega constante de vias, sinalização de segurança, contratação prioritária de trabalhadores locais do Dondo e canal permanente de ouvidoria comunitária."
+        }
+      ],
+      legalRef: "EIA da Central Solar de Dondo e Decreto nº 54/2015.",
+      keyDistinction: "Projetos solares demandam muita terra (cerca de 2 hectares por MW), exigindo triagem criteriosa para não invadir machambas produtivas de subsistência."
+    },
+    sampleScenarios: [
+      "Se a área da Central de Dondo abrigasse espécies de flora protegidas pela Lei de Florestas, qual medida da hierarquia de mitigação deveria ter sido aplicada?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 19,
+    moduleId: "mod-4",
+    moduleTitle: "Linhas de Transmissão Elétrica",
+    title: "Estudo de Caso: Linha de 400 kV Songo-Matambo (Tete) e Controle de Emissões",
+    question: "Com base no estudo de AIA da Linha de Alta Tensão de 400 kV Songo-Matambo em Tete, quais os principais poluentes atmosféricos emitidos na fase de obras e que medidas operacionais rígidas foram impostas aos camiões e máquinas pesadas?",
+    contextPrompt: "Identifique os gases de escape (NOx, SO2, CO, particulados), poeiras por circulação em terra batida e os protocolos de velocidade, lonas e rega.",
+    keywords: [
+      "Songo-Matambo",
+      "400 kV",
+      "Província de Tete",
+      "EDM e Verde Azul",
+      "Categoria A",
+      "NOx, SO2, CO",
+      "poeiras",
+      "rega de vias",
+      "limite 30 km/h",
+      "lonas em caçambas"
+    ],
+    officialAnswer: {
+      summary: "Na obra da linha de 400 kV Songo-Matambo (Categoria A), os principais impactos atmosféricos são poeiras fugitivas e gases de escape (NOx, SO2, CO). As mitigações obrigatórias incluem limite de velocidade a 30 km/h, rega periódica com caminhões-pipa e cobertura de caçambas com lonas.",
+      sections: [
+        {
+          heading: "1. Origem e Tipos de Emissões na Linha Songo-Matambo",
+          content: "A escavação das fundações das torres, abertura de picadas e transporte de concreto e estruturas metálicas mobilizam dezenas de veículos pesados a diesel, emitindo material particulado (poeiras respiráveis), óxidos de azoto (NOx), dióxido de enxofre (SO2) e monóxido de carbono (CO)."
+        },
+        {
+          heading: "2. Protocolo Operacional de Mitigação Obrigatória",
+          content: "• Vias Não Pavimentadas: Umectação regular (rega com água) dos acessos nas proximidades de povoações de Tete;\n• Limitação de Velocidade: Restrição rígida a 30 km/h em trechos habitados para minimizar ressuspensão de poeiras e prevenir atropelamentos;\n• Transporte de Inertes: Cobertura obrigatória de todas as caçambas de camiões com lonas impermeáveis;\n• Maquinaria: Manutenção preventiva documentada dos motores a diesel e proibição expressa de veículos em marcha lenta ociosa prolongada."
+        }
+      ],
+      legalRef: "Adenda ao EIA do Projeto da Linha 400 kV Songo-Matambo (EDM / Verde Azul, 2022) e Decreto nº 54/2015.",
+      keyDistinction: "A fase de construção concentra 90% das emissões atmosféricas de todo o ciclo de vida de uma linha de transmissão elétrica."
+    },
+    sampleScenarios: [
+      "Quais os riscos à saúde das comunidades das margens da estrada de acesso em Tete causados pela inalação crônica de partículas PM10 e PM2.5 durante 18 meses de obras?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 20,
+    moduleId: "mod-6",
+    moduleTitle: "Matriz Energética Comparada",
+    title: "Estudo de Caso: Central Eólica da Namaacha e Riscos à Avifauna",
+    question: "Quais são os principais impactos ambientais específicos avaliados na implantação da Central Eólica da Namaacha (Província de Maputo) e como a AIA aborda o ruído e a colisão de aves e morcegos?",
+    contextPrompt: "Explique a topografia dos planaltos da Namaacha, o efeito barreira das pás giratórias, ruído aerodinâmico e o transporte rodoviário de cargas sobredimensionadas.",
+    keywords: [
+      "Central Eólica da Namaacha",
+      "Namaacha",
+      "Província de Maputo",
+      "aerogeradores",
+      "colisão de avifauna e morcegos",
+      "ruído aerodinâmico",
+      "ruído mecânico",
+      "cargas sobredimensionadas"
+    ],
+    officialAnswer: {
+      summary: "A Central da Namaacha aproveita os ventos fortes dos planaltos, mas a AIA exige monitoria contínua da mortalidade de aves migratórias e morcegos por colisão com as pás, controle de ruído aerodinâmico próximo a habitações e abertura controlada de acessos para pás gigantes.",
+      sections: [
+        {
+          heading: "1. Impacto Crítico: Mortalidade de Fauna Alada (Avifauna e Quirópteros)",
+          content: "As pás dos aerogeradores giram em altas velocidades periféricas, criando efeito estroboscópico e barreira tridimensional que causa mortes por colisão direta ou barotrauma (queda brusca de pressão no ar que causa hemorragia pulmonar em morcegos)."
+        },
+        {
+          heading: "2. Poluição Sonora (Acústica)",
+          content: "Emissão contínua de ruído mecânico (caixas de engrenagens no topo da torre) e aerodinâmico (atrito do ar nas pás). A AIA exige distância de amortecimento (buffer zone mínima de 500 a 1.000 metros) entre as torres e residências da vila da Namaacha."
+        },
+        {
+          heading: "3. Logística de Cargas Sobredimensionadas",
+          content: "O transporte das torres e pás com mais de 50 metros de comprimento exige alinhamento e ampliação de curvas em rodovias sinuosas da serra, demandando terraplenagem e remoção temporária de vegetação lateral."
+        }
+      ],
+      legalRef: "Estudos de AIA do Setor Eólico em Moçambique e Decreto nº 54/2015.",
+      keyDistinction: "A energia eólica tem pegada nula na água e no ar, mas seu monitoramento deve durar anos após a inauguração para registrar a taxa de carcaças de aves coletadas sob as torres."
+    },
+    sampleScenarios: [
+      "Que tecnologia de radares ou câmeras com IA pode desacelerar automaticamente as pás dos aerogeradores da Namaacha ao detectar a aproximação de bandos de aves migratórias?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 21,
+    moduleId: "mod-6",
+    moduleTitle: "Matriz Energética Comparada",
+    title: "Centrais Hidroelétricas Tropicais (Cahora Bassa): Emissões de Metano (CH4) e Caudal Ecológico",
+    question: "Por que grandes barragens hidroelétricas em regiões tropicais (como Cahora Bassa no Rio Zambeze) podem emitir gases de efeito estufa (metano CH4) e qual a importância da garantia do Caudal Ecológico na AIA?",
+    contextPrompt: "Explique a decomposição anaeróbia da vegetação submersa na albufeira, a formação de metano (CH4), e a regulação da vazão a jusante para manter o delta do Zambeze vivo.",
+    keywords: [
+      "Cahora Bassa",
+      "Bacia do Zambeze",
+      "metano",
+      "CH4",
+      "decomposição anaeróbia",
+      "albufeira tropical",
+      "caudal ecológico",
+      "delta do Zambeze",
+      "inundação de habitats"
+    ],
+    officialAnswer: {
+      summary: "O enchimento da albufeira submerge florestas que se decompõem sem oxigênio nas camadas profundas, liberando metano (CH4) — gás com potencial de aquecimento 28 vezes maior que o CO2. Além disso, a AIA exige a manutenção de um Caudal Ecológico a jusante para proteger a foz e os mangais.",
+      sections: [
+        {
+          heading: "1. Emissão de Metano em Reservatórios Tropicais",
+          content: "Em climas quentes como Tete, o lago de acumulação cobre biomassa vegetal fresca. A decomposição anóxica nas camadas profundas do reservatório converte matéria orgânica em metano (CH4). Ao passar pelas turbinas e vertedouros, o gás é despressurizado e liberado para a atmosfera."
+        },
+        {
+          heading: "2. A Exigência do Caudal Ecológico a Jusante",
+          content: "A barragem altera o pulso hidrológico natural do rio. O Caudal Ecológico é o volume mínimo de água que deve ser descarregado continuamente e de forma programada para preservar as rotas migratórias de peixes, manter os mangais do delta do Zambeze e garantir água para a agricultura ribeirinha."
+        },
+        {
+          heading: "3. Impactos Sociais e Geopolíticos",
+          content: "Exige reassentamento involuntário de populações das margens e controle rigoroso de assoreamento para evitar que sedimentos reduzam o volume útil do reservatório ao longo das décadas."
+        }
+      ],
+      legalRef: "Lei de Águas (Lei nº 16/91), Lei do Ambiente (Lei nº 20/97) e Decreto nº 54/2015.",
+      keyDistinction: "Centrais hidroelétricas são renováveis, mas albufeiras tropicais não são carbono-zero nos seus primeiros 10 a 20 anos de operação."
+    },
+    sampleScenarios: [
+      "Como a prévia desflorestação e remoção da madeira nobre antes do enchimento da albufeira de uma nova barragem reduz as emissões de metano nos anos subsequentes?"
+    ],
+    isOfficialDoc: false
+  },
+  {
+    id: 22,
+    moduleId: "mod-2",
+    moduleTitle: "Quadro Legal e Institucional",
+    title: "Nova Lei de Electricidade (Lei nº 12/2022) e Revisores Independentes (DM nº 118/2022)",
+    question: "Quais são as principais inovações trazidas pela Nova Lei de Electricidade (Lei nº 12/2022) e pelo Diploma Ministerial nº 118/2022 no quadro regulatório ambiental e energético de Moçambique?",
+    contextPrompt: "Explique a revogação da antiga Lei 21/97, a abertura para mini-redes e produtores independentes privados de energias renováveis, e a regulamentação dos revisores para projetos de Categoria A+.",
+    keywords: [
+      "Lei nº 12/2022",
+      "revogou a Lei 21/97",
+      "mini-redes",
+      "produtores independentes",
+      "DM nº 118/2022",
+      "Revisores Especialistas Independentes",
+      "ARENE",
+      "transição energética"
+    ],
+    officialAnswer: {
+      summary: "A Lei nº 12/2022 modernizou o setor elétrico ao permitir mini-redes renováveis descentralizadas e incentivar produtores privados; já o DM nº 118/2022 regulamentou os critérios de contratação e independência dos peritos avaliadores de projetos Categoria A+.",
+      sections: [
+        {
+          heading: "1. Inovações da Lei nº 12/2022 de Electricidade",
+          content: "Revogou a antiga Lei nº 21/97. Criou o regime jurídico para mini-redes e geração isolada fora da rede nacional, facilitando o licenciamento de sistemas solares e hídricos comunitários e definindo o papel regulador da ARENE (Autoridade Reguladora de Energia)."
+        },
+        {
+          heading: "2. Inovações do Diploma Ministerial nº 118/2022 (AIA Categoria A+)",
+          content: "Estabeleceu as regras rígidas para a contratação de Revisores Especialistas Independentes. Exige que esses revisores não tenham vínculos com o proponente, comprovem no mínimo 10 anos de experiência internacional e emitam relatórios técnicos autônomos para blindar a decisão de licenciamento de megaprojetos contra pressões políticas."
+        }
+      ],
+      legalRef: "Lei nº 12/2022 de 11 de Julho e Diploma Ministerial nº 118/2022 de Moçambique.",
+      keyDistinction: "A nova legislação compatibiliza a urgência da eletrificação rural de Moçambique com os mais altos padrões internacionais de salvaguarda ambiental."
+    },
+    sampleScenarios: [
+      "Um investidor privado quer instalar uma mini-rede solar de 1 MW em Cabo Delgado. Qual o procedimento combinado sob a Lei 12/2022 e a classificação de AIA pelo Decreto 54/2015?"
+    ],
+    isOfficialDoc: false
   }
 ];
 
@@ -655,10 +940,18 @@ export const TECHNICAL_GLOSSARY = {
   "TdR": "Termos de Referência — Documento que delimita o escopo dos estudos do EIA aprovado pela DINAB.",
   "DINAB": "Direcção Nacional do Ambiente — Entidade do governo de Moçambique responsável pela gestão técnica de AIA.",
   "MTA": "Ministério da Terra e Ambiente — Órgão central do Estado que tutela o setor ambiental em Moçambique.",
+  "ARENE": "Autoridade Reguladora de Energia — Órgão regulador das tarifas e operadores de eletricidade em Moçambique.",
   "Faixa de Servidão": "Faixa de terreno restrita sob a linha de transmissão onde são proibidas habitações e árvores de grande porte.",
   "Efeito Corona": "Descarga luminosa e acústica (zumbido) devida à ionização do ar ao redor de condutores de alta tensão.",
-  "PCB": "Bifenilos Policlorados — Compostos sintéticos antigamente usados como isolantes em transformadores, altamente cancerígenos.",
+  "PCB": "Bifenilos Policlorados (Askarel) — Óleos isolantes sintéticos cancerígenos e poluentes persistentes regulados pelo Decreto 83/2014.",
   "SAO": "Separador de Água e Óleo — Caixa de retenção estanque que separa óleos por densidade antes do efluente pluvial sair da subestação.",
-  "DUAT": "Direito de Uso e Aproveitamento da Terra — Instituto jurídico moçambicano que regula a posse e uso da terra.",
-  "AQUA": "Agência Nacional para o Controlo da Qualidade Ambiental — Entidade fiscalizadora de Moçambique."
+  "DUAT": "Direito de Uso e Aproveitamento da Terra — Instituto jurídico moçambicano que regula a posse e uso da terra (Lei 19/97).",
+  "AQUA": "Agência Nacional para o Controlo da Qualidade Ambiental — Entidade fiscalizadora de Moçambique.",
+  "ACV": "Avaliação do Ciclo de Vida (Cradle-to-Grave) — Análise ambiental desde a extração do silício até o descarte final (Jambo, 2025).",
+  "Hierarquia de Mitigação": "Sequência técnica prioritária: 1. Evitar -> 2. Minimizar -> 3. Restaurar -> 4. Compensar (offsets).",
+  "Caudal Ecológico": "Vazão hídrica mínima contínua descarregada por barragens para preservar ecossistemas aquáticos a jusante.",
+  "Lei 12/2022": "Nova Lei de Electricidade de Moçambique que revogou a Lei 21/97, regulando mini-redes renováveis e produtores privados.",
+  "DM 118/2022": "Diploma Ministerial que regulamenta os Revisores Especialistas Independentes para projetos de Categoria A+.",
+  "Thermal Runaway": "Fuga térmica autoalimentada em baterias de íon de lítio com emissão de gases tóxicos e fogo difícil de extinguir."
 };
+

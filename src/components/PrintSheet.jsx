@@ -71,13 +71,13 @@ ${q.officialAnswer.sections.map(s => `${s.heading}:\n${s.content}`).join("\n\n")
         {/* Cabeçalho Acadêmico */}
         <div className="border-b-2 border-slate-900 pb-6 text-center space-y-2">
           <div className="text-xs uppercase tracking-widest font-black text-emerald-800">
-            República de Moçambique • Ensino Superior de Engenharia & Ciências Ambientais
+            Universidade Politécnica • Campus de Maputo • Curso de Engenharia Elétrica
           </div>
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950">
             Ficha de Revisão: Teste 1 de Avaliação de Impacto Ambiental (AIA)
           </h1>
           <p className="text-xs text-slate-600 max-w-xl mx-auto">
-            Fundamentação Teórica e Normativa: Lei do Ambiente (Lei nº 20/97), Regulamento de AIA (Decreto nº 54/2015), Reassentamento (Decreto nº 31/2012) e Resíduos Perigosos (Decreto nº 83/2014).
+            Docente: Joel Jorge Malope • Fundamentação: Lei do Ambiente (Lei nº 20/97), Regulamento de AIA (Decreto nº 54/2015), Nova Lei de Electricidade (Lei nº 12/2022), DM nº 118/2022, Reassentamento (Decreto nº 31/2012) e Resíduos Perigosos (Decreto nº 83/2014).
           </p>
         </div>
 
